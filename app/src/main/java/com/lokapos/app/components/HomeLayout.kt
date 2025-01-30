@@ -16,6 +16,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.lokapos.app.modules.history.HistoryScreen
 import com.lokapos.app.modules.home.HomeScreen
+import com.lokapos.app.ui.theme.animatedComposable
 
 @SuppressLint("ContextCastToActivity")
 @Composable
@@ -45,8 +46,11 @@ fun HomeLayout(
 
 @Composable
 private fun NavHostContainer(navController: NavHostController, modifier: Modifier = Modifier) {
-    NavHost(navController = navController, startDestination = "home-screen", modifier = modifier) {
-        composable("home-screen") { HomeScreen(navController) }
-        composable("history-screen") { HistoryScreen() }
+    NavHost(
+        navController = navController, startDestination = "home-screen", modifier = modifier,
+
+        ) {
+        animatedComposable("home-screen") { HomeScreen(navController) }
+        animatedComposable("history-screen") { HistoryScreen() }
     }
 }

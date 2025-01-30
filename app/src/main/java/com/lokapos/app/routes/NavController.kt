@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.lokapos.app.components.HomeLayout
 import com.lokapos.app.modules.authentication.SignInScreen
+import com.lokapos.app.ui.theme.animatedComposable
 
 
 @Composable
@@ -16,14 +17,14 @@ fun AppNavHost() {
         navController = navController,
         startDestination = "sign-in"
     ) {
-        composable("sign-in") {
+        animatedComposable("sign-in") {
             SignInScreen(
                 onNavigateToHome = {
                     navController.navigate("home-screen")
                 }
             )
         }
-        composable("home-screen") {
+        animatedComposable("home-screen") {
             HomeLayout()
         }
 
