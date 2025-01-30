@@ -1,5 +1,6 @@
 package com.lokapos.app.modules.authentication
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -16,8 +17,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.lokapos.app.R
 import com.lokapos.app.components.BaseScreen
 import com.lokapos.app.components.CustomPasswordField
 import com.lokapos.app.components.CustomTextField
@@ -48,6 +51,13 @@ fun SignInScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Spacer(Modifier.size(64.dp))
+                    Image(
+                        modifier = Modifier.size(48.dp),
+                        painter = painterResource(id = R.drawable.app_logo),
+                        contentDescription = "This is what less-abled people will hear when they tap the image. Please write a conscious description of your image"
+                    )
+                    Spacer(Modifier.size(16.dp))
+
                     Text(
                         "LOKAPOS", fontSize = 32.sp, color = Color.Black
                     )
