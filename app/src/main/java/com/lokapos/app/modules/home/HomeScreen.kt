@@ -7,6 +7,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import com.lokapos.app.components.ScreenContainer
 import com.lokapos.app.components.SolidButton
 
 @Composable
@@ -19,13 +20,15 @@ fun HomeScreen(
         Arrangement.SpaceBetween
     ) {
         Text("HELLO WORLD")
-        Column {
-            SolidButton(
-                label = "LOGOUT",
-                onClick = {
-                    navController.navigate("sign-in")
-                }
-            )
+        ScreenContainer {
+            Column {
+                SolidButton(
+                    label = "LOGOUT",
+                    onClick = {
+                        navController.navigate("sign-in")
+                    }
+                )
+            }
         }
         Text("HELLO WORLD")
     }

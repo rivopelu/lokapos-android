@@ -6,20 +6,22 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
+import com.lokapos.app.components.ScreenContainer
 
 
 @Composable
 fun HistoryScreen(
 
 ) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize(),
-        Arrangement.SpaceBetween
-    ) {
-        Text("HELLO HISTORY")
-        Text("HELLO 2")
-        Text("HELLO 3")
+    ScreenContainer {
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+            Arrangement.SpaceBetween
+        ) {
+            Text("HELLO HISTORY")
+            Text("HELLO 2")
+            Text("HELLO 3")
+        }
     }
 }
