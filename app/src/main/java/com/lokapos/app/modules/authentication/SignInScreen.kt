@@ -26,7 +26,9 @@ import com.lokapos.app.components.SolidButton
 import com.lokapos.app.ui.theme.Style
 
 @Composable
-fun SignInScreen() {
+fun SignInScreen(
+    onNavigateToHome: () -> Unit
+) {
     val email = remember { mutableStateOf("") }
     val password = remember { mutableStateOf("") }
     val isPasswordVisible = remember { mutableStateOf(false) } // For toggling password visibility
@@ -45,7 +47,7 @@ fun SignInScreen() {
                     modifier = Modifier.fillMaxWidth(), // Ensure it takes full screen space
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    Spacer(Modifier.size(32.dp))
+                    Spacer(Modifier.size(64.dp))
                     Text(
                         "LOKAPOS", fontSize = 32.sp, color = Color.Black
                     )
@@ -89,7 +91,9 @@ fun SignInScreen() {
 
                         SolidButton(
                             label = "Sign In",
-                            onClick = { }
+                            onClick = {
+                                onNavigateToHome()
+                            }
                         )
                     }
                 }

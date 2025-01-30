@@ -6,16 +6,27 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import com.lokapos.app.components.SolidButton
 
 @Composable
-fun HomeScreen() {
-    return Column(
+fun HomeScreen(
+    navController: NavHostController
+) {
+    Column(
         modifier = Modifier
             .fillMaxSize(),
         Arrangement.SpaceBetween
     ) {
         Text("HELLO WORLD")
-        Text("HELLO WORLD")
+        Column {
+            SolidButton(
+                label = "LOGOUT",
+                onClick = {
+                    navController.navigate("sign-in")
+                }
+            )
+        }
         Text("HELLO WORLD")
     }
 }
