@@ -16,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final _scrollController = ScrollController();
   int itemCount = 40;
   bool activeScroll = false;
+  String dummyImageUrl = "https://adespresso.com/wp-content/uploads/2019/10/guide-social-media-image-sizes-2019-1024x536.jpg";
 
   Future<void> _refreshData() async {
     await Future.delayed(Duration(seconds: 2));
@@ -63,16 +64,20 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: RefreshIndicator(
         onRefresh: _refreshData,
-        child: ListView.builder(
-          controller: _scrollController,
-          itemCount: itemCount,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text('Item ${index + 1}'),
-            );
-          },
-        ),
-      ),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                AspectRatio(
+                  aspectRatio: 4 / 3.5,
+                  child: Image.network(
+                      // Makes the image fill the available width
+                      fit: BoxFit.cover,
+                      dummyImageUrl),
+                ),
+                Text("HELLO WORLD")
+              ],
+            ),
+          )),
     );
   }
 }
