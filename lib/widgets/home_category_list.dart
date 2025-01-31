@@ -23,12 +23,11 @@ class HomeCategoryList extends StatelessWidget {
               print("Item $index clicked");
             }
           },
-          borderRadius: BorderRadius.circular(8), // Optional: Rounded corners
+          borderRadius: BorderRadius.circular(8),
           child: Container(
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),
-              // Optional: Match ripple effect
             ),
             alignment: Alignment.center,
             padding: EdgeInsets.all(16),

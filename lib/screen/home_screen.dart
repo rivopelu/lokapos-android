@@ -4,6 +4,7 @@ import 'package:lokapos/widgets/home_ads_widget.dart';
 import 'package:lokapos/widgets/home_category_list.dart';
 import 'package:lokapos/widgets/home_main_info_card.dart';
 import 'package:lokapos/widgets/screen_container.dart';
+import 'package:lokapos/widgets/special_for_today_carouse_list.dart';
 
 class HomeScreen extends StatefulWidget {
   final Function(PreferredSizeWidget) updateAppBar;
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _scrollListener() {
     if (_scrollController.position.pixels > 5) {
-      widget.showAppBar(true);
+      widget.showAppBar(false);
     } else {
       widget.showAppBar(false);
     }
@@ -80,30 +81,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       HomeMainInfoCard(),
                       HomeCategoryList(),
-                      Text("HELLO WORLD"),
-                      GridView.builder(
-                        padding: EdgeInsets.symmetric(horizontal: 0),
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 8,
-                          mainAxisSpacing: 8,
-                          childAspectRatio: 1,
-                        ),
-                        itemCount: 8,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            color: Colors.blueAccent,
-                            alignment: Alignment.center,
-                            child: Text(
-                              "Item $index",
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 16),
-                            ),
-                          );
-                        },
-                      ),
+                      Row(children: [
+                        Text(
+                          "Special hari ini",
+                          textAlign: TextAlign.start,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
+                        )
+                      ]),
+                      SpecialForTodayCarouseList(),
+                      HomeCategoryList(),
+
                     ],
                   )),
                 )
