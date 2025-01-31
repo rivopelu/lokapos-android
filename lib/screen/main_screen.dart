@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lokapos/screen/order_screen.dart';
+import 'package:lokapos/screen/profile_screen.dart';
+import 'package:lokapos/screen/promo_screen.dart';
 import 'home_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -14,7 +16,9 @@ class MainScreenState extends State<MainScreen> {
   PreferredSizeWidget _currentAppBar = AppBar(title: Text("Default Title"));
 
   final GlobalKey<NavigatorState> _homeNavigatorKey = GlobalKey<NavigatorState>();
-  final GlobalKey<NavigatorState> _historyNavigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> _orderNavigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> _promoNavigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> _profileNavigatorKey = GlobalKey<NavigatorState>();
 
   List<Widget> get _pages => [
     Navigator(
@@ -24,9 +28,21 @@ class MainScreenState extends State<MainScreen> {
       },
     ),
     Navigator(
-      key: _historyNavigatorKey,
+      key: _orderNavigatorKey,
       onGenerateRoute: (settings) {
         return MaterialPageRoute(builder: (_) => OrderScreen(updateAppBar: _updateAppBar));
+      },
+    ),
+    Navigator(
+      key: _promoNavigatorKey,
+      onGenerateRoute: (settings) {
+        return MaterialPageRoute(builder: (_) => PromoScreen(updateAppBar: _updateAppBar));
+      },
+    ),
+    Navigator(
+      key: _profileNavigatorKey,
+      onGenerateRoute: (settings) {
+        return MaterialPageRoute(builder: (_) => ProfileScreen(updateAppBar: _updateAppBar));
       },
     ),
   ];
@@ -51,7 +67,8 @@ class MainScreenState extends State<MainScreen> {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
+          BottomNavigationBarItem(icon: Icon(Icons.receipt), label: 'Order'),
+          BottomNavigationBarItem(icon: Icon(Icons.local_offer), label: 'Promo'),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

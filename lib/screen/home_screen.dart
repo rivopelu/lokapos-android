@@ -18,8 +18,7 @@ class HomeScreen extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       updateAppBar(
         AppBar(
-          title: Text("Home Page"),
-          backgroundColor: Colors.blue,
+          title: Text("Home"),
           actions: [
             IconButton(
               icon: Icon(Icons.search),

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-class OrderScreen extends StatelessWidget {
+class PromoScreen extends StatelessWidget {
   final Function(PreferredSizeWidget) updateAppBar;
 
-  const OrderScreen({super.key, required this.updateAppBar});
+  const PromoScreen({super.key, required this.updateAppBar});
 
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       updateAppBar(
         AppBar(
-          title: Text("ORDER"),
+          title: Text("PROMO"),
           actions: [
             IconButton(
               icon: Icon(Icons.refresh),

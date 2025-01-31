@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       title: "Lokapos",
       theme: ThemeData(
         useMaterial3: true,
+        scaffoldBackgroundColor: AppColors.backgroundColor,
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryMain),
       ),
       debugShowCheckedModeBanner: false,
