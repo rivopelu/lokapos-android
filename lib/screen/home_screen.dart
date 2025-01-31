@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lokapos/widgets/home_ads_widget.dart';
+import 'package:lokapos/widgets/home_category_list.dart';
 import 'package:lokapos/widgets/home_main_info_card.dart';
 import 'package:lokapos/widgets/screen_container.dart';
 
@@ -67,6 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: RefreshIndicator(
         onRefresh: _refreshData,
           child: SingleChildScrollView(
+            controller: _scrollController,
             child: Column(
               children: [
                 HomeAdsWidget(),
@@ -74,10 +76,34 @@ class _HomeScreenState extends State<HomeScreen> {
                   transform: Matrix4.translationValues(0, -50, 0),
                   child: ScreenContainer(
                       child: Column(
+                    spacing: 24,
                     children: [
                       HomeMainInfoCard(),
+                      HomeCategoryList(),
                       Text("HELLO WORLD"),
-                      Text("HELLO WORLD")
+                      GridView.builder(
+                        padding: EdgeInsets.symmetric(horizontal: 0),
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 8,
+                          mainAxisSpacing: 8,
+                          childAspectRatio: 1,
+                        ),
+                        itemCount: 8,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            color: Colors.blueAccent,
+                            alignment: Alignment.center,
+                            child: Text(
+                              "Item $index",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 16),
+                            ),
+                          );
+                        },
+                      ),
                     ],
                   )),
                 )
