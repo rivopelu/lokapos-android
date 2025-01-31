@@ -8,7 +8,7 @@
 PRODUCT_NAME = lokapos
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.lokapos.app.lokapos
+PRODUCT_BUNDLE_IDENTIFIER = com.lokapos.app
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2025 com.lokapos.app. All rights reserved.

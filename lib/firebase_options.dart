@@ -63,6 +63,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '285217660405',
     projectId: 'storage-sentrum-stagging',
     storageBucket: 'storage-sentrum-stagging.appspot.com',
-    iosBundleId: 'com.lokapos.app.lokapos',
+    iosBundleId: 'com.lokapos.app',
   );
 }

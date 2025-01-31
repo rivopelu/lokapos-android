@@ -1,4 +1,4 @@
-package com.lokapos.app.lokapos
+package com.lokapos.app
 
 import io.flutter.embedding.android.FlutterActivity
 
