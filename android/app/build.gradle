@@ -12,7 +12,6 @@ android {
     namespace = "com.lokapos.app"
     compileSdk 34
     ndkVersion = "25.1.8937393"
-
     compileOptions {
         coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
