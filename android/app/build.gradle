@@ -22,6 +22,8 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8
     }
 
+
+
     defaultConfig {
         applicationId = "com.lokapos.app"
         multiDexEnabled true
