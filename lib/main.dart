@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryMain),
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: "/sign-in",
+      initialRoute: "/main",
       onGenerateRoute: (settings) {
         switch (settings.name) {
           case "/sign-in":

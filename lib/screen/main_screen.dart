@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lokapos/screen/order_screen.dart';
 import 'package:lokapos/screen/profile_screen.dart';
 import 'package:lokapos/screen/promo_screen.dart';
+
 import 'home_screen.dart';
 
 class MainScreen extends StatefulWidget {
@@ -13,6 +14,7 @@ class MainScreen extends StatefulWidget {
 
 class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
+  bool _showAppBar = true;
   PreferredSizeWidget _currentAppBar = AppBar(title: Text("Default Title"));
 
   final GlobalKey<NavigatorState> _homeNavigatorKey = GlobalKey<NavigatorState>();
@@ -24,9 +26,17 @@ class MainScreenState extends State<MainScreen> {
     Navigator(
       key: _homeNavigatorKey,
       onGenerateRoute: (settings) {
-        return MaterialPageRoute(builder: (_) => HomeScreen(updateAppBar: _updateAppBar));
-      },
-    ),
+            return MaterialPageRoute(
+                builder: (_) => HomeScreen(
+                      updateAppBar: _updateAppBar,
+                      showAppBar: (bool bool) {
+                        setState(() {
+                          _showAppBar = bool;
+                        });
+                      },
+                    ));
+          },
+        ),
     Navigator(
       key: _orderNavigatorKey,
       onGenerateRoute: (settings) {
@@ -62,7 +72,7 @@ class MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _currentAppBar,
+      appBar: _showAppBar ? _currentAppBar : null,
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: [
