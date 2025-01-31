@@ -23,7 +23,6 @@ android {
     }
 
 
-
     defaultConfig {
         applicationId = "com.lokapos.app"
         multiDexEnabled true
