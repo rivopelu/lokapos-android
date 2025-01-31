@@ -3,14 +3,33 @@ import 'home_screen.dart';
 import 'history_screen.dart';
 
 class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
   @override
-  _MainScreenState createState() => _MainScreenState();
+  MainScreenState createState() => MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-
   PreferredSizeWidget _currentAppBar = AppBar(title: Text("Default Title"));
+
+  final GlobalKey<NavigatorState> _homeNavigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> _historyNavigatorKey = GlobalKey<NavigatorState>();
+
+  List<Widget> get _pages => [
+    Navigator(
+      key: _homeNavigatorKey,
+      onGenerateRoute: (settings) {
+        return MaterialPageRoute(builder: (_) => HomeScreen(updateAppBar: _updateAppBar));
+      },
+    ),
+    Navigator(
+      key: _historyNavigatorKey,
+      onGenerateRoute: (settings) {
+        return MaterialPageRoute(builder: (_) => HistoryScreen(updateAppBar: _updateAppBar));
+      },
+    ),
+  ];
 
   void _updateAppBar(PreferredSizeWidget newAppBar) {
     setState(() {
@@ -18,27 +37,24 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final List<Widget> _pages = [
-      HomeScreen(updateAppBar: _updateAppBar),
-      HistoryScreen(updateAppBar: _updateAppBar),
-    ];
-
     return Scaffold(
       appBar: _currentAppBar,
-      body: _pages[_selectedIndex],
+      body: _pages[_selectedIndex], // Memilih halaman sesuai tab yang dipilih
       bottomNavigationBar: BottomNavigationBar(
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.history), label: "History"),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
         ],
         currentIndex: _selectedIndex,
-        onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-        },
+        onTap: _onItemTapped,
       ),
     );
   }

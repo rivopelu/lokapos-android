@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class HistoryScreen extends StatelessWidget {
   final Function(PreferredSizeWidget) updateAppBar;
 
-  HistoryScreen({required this.updateAppBar});
+  const HistoryScreen({super.key, required this.updateAppBar});
 
   @override
   Widget build(BuildContext context) {
