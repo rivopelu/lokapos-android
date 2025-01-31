@@ -36,10 +36,10 @@ class HomeScreen extends StatelessWidget {
       body: RefreshIndicator(
         onRefresh: _refreshData,
         child: ListView.builder(
-          itemCount: itemCount, // Jumlah item dalam list
+          itemCount: itemCount,
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text('Item ${index + 1}'), // Menampilkan nomor item
+              title: Text('Item ${index + 1}'),
             );
           },
         ),

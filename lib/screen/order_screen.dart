@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class HistoryScreen extends StatelessWidget {
+class OrderScreen extends StatelessWidget {
   final Function(PreferredSizeWidget) updateAppBar;
 
-  const HistoryScreen({super.key, required this.updateAppBar});
+  const OrderScreen({super.key, required this.updateAppBar});
 
   @override
   Widget build(BuildContext context) {

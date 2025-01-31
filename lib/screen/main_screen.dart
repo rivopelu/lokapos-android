@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lokapos/screen/order_screen.dart';
 import 'home_screen.dart';
-import 'history_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -26,7 +26,7 @@ class MainScreenState extends State<MainScreen> {
     Navigator(
       key: _historyNavigatorKey,
       onGenerateRoute: (settings) {
-        return MaterialPageRoute(builder: (_) => HistoryScreen(updateAppBar: _updateAppBar));
+        return MaterialPageRoute(builder: (_) => OrderScreen(updateAppBar: _updateAppBar));
       },
     ),
   ];
@@ -47,7 +47,7 @@ class MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _currentAppBar,
-      body: _pages[_selectedIndex], // Memilih halaman sesuai tab yang dipilih
+      body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
