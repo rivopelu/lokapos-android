@@ -14,7 +14,7 @@ class MainScreen extends StatefulWidget {
 
 class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-  bool _showAppBar = true;
+  bool _showAppBar = false;
   PreferredSizeWidget _currentAppBar = AppBar(title: Text("Default Title"));
 
   final GlobalKey<NavigatorState> _homeNavigatorKey = GlobalKey<NavigatorState>();
@@ -46,13 +46,20 @@ class MainScreenState extends State<MainScreen> {
     Navigator(
       key: _promoNavigatorKey,
       onGenerateRoute: (settings) {
-        return MaterialPageRoute(builder: (_) => PromoScreen(updateAppBar: _updateAppBar));
-      },
+            setState(() {
+              _showAppBar = true;
+            });
+            return MaterialPageRoute(
+                builder: (_) => PromoScreen(updateAppBar: _updateAppBar));
+          },
     ),
     Navigator(
       key: _profileNavigatorKey,
       onGenerateRoute: (settings) {
-        return MaterialPageRoute(builder: (_) => ProfileScreen(updateAppBar: _updateAppBar));
+            setState(() {
+              _showAppBar = true;
+            });
+            return MaterialPageRoute(builder: (_) => ProfileScreen(updateAppBar: _updateAppBar));
       },
     ),
   ];

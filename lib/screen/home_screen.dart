@@ -1,5 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:lokapos/widgets/home_ads_widget.dart';
+import 'package:lokapos/widgets/home_main_info_card.dart';
+import 'package:lokapos/widgets/screen_container.dart';
 
 class HomeScreen extends StatefulWidget {
   final Function(PreferredSizeWidget) updateAppBar;
@@ -16,7 +19,6 @@ class _HomeScreenState extends State<HomeScreen> {
   final _scrollController = ScrollController();
   int itemCount = 40;
   bool activeScroll = false;
-  String dummyImageUrl = "https://adespresso.com/wp-content/uploads/2019/10/guide-social-media-image-sizes-2019-1024x536.jpg";
 
   Future<void> _refreshData() async {
     await Future.delayed(Duration(seconds: 2));
@@ -67,14 +69,18 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                AspectRatio(
-                  aspectRatio: 4 / 3.5,
-                  child: Image.network(
-                      // Makes the image fill the available width
-                      fit: BoxFit.cover,
-                      dummyImageUrl),
-                ),
-                Text("HELLO WORLD")
+                HomeAdsWidget(),
+                Container(
+                  transform: Matrix4.translationValues(0, -50, 0),
+                  child: ScreenContainer(
+                      child: Column(
+                    children: [
+                      HomeMainInfoCard(),
+                      Text("HELLO WORLD"),
+                      Text("HELLO WORLD")
+                    ],
+                  )),
+                )
               ],
             ),
           )),
