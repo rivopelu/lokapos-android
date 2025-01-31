@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lokapos/configs/app_config.dart';
-import 'package:lokapos/themes/app_colors.dart';
+import 'package:lokapos/screen/auth/sign_in_screen.dart';
+import 'package:lokapos/screen/auth/sign_up_screen.dart';
+import 'package:lokapos/screen/main_screen.dart';
 
 void main() async {
   AppConfig().runConfig();
@@ -13,35 +15,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-        home: Scaffold(
-          appBar: AppBar(
-            foregroundColor: Colors.white,
-            backgroundColor: AppColors.primaryMain,
-            title: Text("HOME PAGE"),
-          ),
-          body: Column(
-            spacing: 12,
-            children: [
-              Text("HELLO WORLD"),
-              Text("HELLO WORLD"),
-              Text("HELLO WORLD"),
-              Text("HELLO WORLD"),
-              Text("HELLO WORLD"),
-              Text("HELLO WORLD"),
-              Text("HELLO WORLD"),
-              Text("HELLO WORLD"),
-              Text("HELLO WORLD"),
-              Text("HELLO WORLD"),
-              Text("HELLO WORLD"),
-            ],
-          ),
-        ));
+      debugShowCheckedModeBanner: false,
+      initialRoute: "/sign-in",
+      routes: {
+        "/sign-in": (context) => SignInScreen(),
+        "/sign-up": (context) => SignUpScreen(),
+        "/main": (context) => MainScreen(),
+      },
+    );
   }
 }
 
