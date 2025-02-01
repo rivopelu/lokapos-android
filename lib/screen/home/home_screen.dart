@@ -33,26 +33,26 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _scrollController.addListener(_scrollListener);
+    // _scrollController.addListener(_scrollListener);
   }
 
-  @override
-  void dispose() {
-    _scrollController.removeListener(_scrollListener);
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   _scrollController.removeListener(_scrollListener);
+  //   super.dispose();
+  // }
 
-  void _scrollListener() {
-    if (_scrollController.position.pixels > 5) {
-      if (kDebugMode) {
-        print(false);
-      }
-    } else {
-      if (kDebugMode) {
-        print(false);
-      }
-    }
-  }
+  // void _scrollListener() {
+  //   if (_scrollController.position.pixels > 5) {
+  //     if (kDebugMode) {
+  //       print(false);
+  //     }
+  //   } else {
+  //     if (kDebugMode) {
+  //       print(false);
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {

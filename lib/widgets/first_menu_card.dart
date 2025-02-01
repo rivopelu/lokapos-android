@@ -39,7 +39,7 @@ class FirstMenuCard extends StatelessWidget {
               width: 120,
               height: 80,
               decoration: BoxDecoration(
-                  color: Colors.black,
+                  color: Colors.black12,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(AppSize.borderRadius),
                     topRight: Radius.circular(AppSize.borderRadius),
