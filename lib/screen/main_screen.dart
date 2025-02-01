@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lokapos/screen/order_screen.dart';
-import 'package:lokapos/screen/profile_screen.dart';
-import 'package:lokapos/screen/promo_screen.dart';
+import 'package:lokapos/screen/order/order_screen.dart';
+import 'package:lokapos/screen/promo/promo_screen.dart';
 
-import 'home_screen.dart';
+import 'home/home_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -14,13 +13,11 @@ class MainScreen extends StatefulWidget {
 
 class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-  bool _showAppBar = false;
   PreferredSizeWidget _currentAppBar = AppBar(title: Text("Default Title"));
 
   final GlobalKey<NavigatorState> _homeNavigatorKey = GlobalKey<NavigatorState>();
   final GlobalKey<NavigatorState> _orderNavigatorKey = GlobalKey<NavigatorState>();
   final GlobalKey<NavigatorState> _promoNavigatorKey = GlobalKey<NavigatorState>();
-  final GlobalKey<NavigatorState> _profileNavigatorKey = GlobalKey<NavigatorState>();
 
   List<Widget> get _pages => [
     Navigator(
@@ -29,40 +26,22 @@ class MainScreenState extends State<MainScreen> {
             return MaterialPageRoute(
                 builder: (_) => HomeScreen(
                       updateAppBar: _updateAppBar,
-                      showAppBar: (bool bool) {
-                        setState(() {
-                          _showAppBar = bool;
-                        });
-                      },
                     ));
           },
         ),
     Navigator(
       key: _orderNavigatorKey,
       onGenerateRoute: (settings) {
-        return MaterialPageRoute(builder: (_) => OrderScreen(updateAppBar: _updateAppBar));
+            return MaterialPageRoute(builder: (_) => OrderScreen(updateAppBar: _updateAppBar));
       },
     ),
     Navigator(
       key: _promoNavigatorKey,
       onGenerateRoute: (settings) {
-            setState(() {
-              _showAppBar = true;
-            });
-            return MaterialPageRoute(
-                builder: (_) => PromoScreen(updateAppBar: _updateAppBar));
-          },
-    ),
-    Navigator(
-      key: _profileNavigatorKey,
-      onGenerateRoute: (settings) {
-            setState(() {
-              _showAppBar = true;
-            });
-            return MaterialPageRoute(builder: (_) => ProfileScreen(updateAppBar: _updateAppBar));
-      },
-    ),
-  ];
+              return MaterialPageRoute(
+                  builder: (_) => PromoScreen(updateAppBar: _updateAppBar));
+            }),
+      ];
 
   void _updateAppBar(PreferredSizeWidget newAppBar) {
     setState(() {
@@ -79,7 +58,7 @@ class MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _showAppBar ? _currentAppBar : null,
+      appBar: _currentAppBar,
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         items: [

@@ -11,16 +11,18 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Sign In")),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Sign In"),
+        backgroundColor: Colors.white10,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Sign In Page"),
             ElevatedButton(
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, "/main");
-              },
+              onPressed: () {},
               child: Text("Login"),
             ),
           ],

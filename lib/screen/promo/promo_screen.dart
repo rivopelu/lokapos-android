@@ -4,7 +4,6 @@ class PromoScreen extends StatelessWidget {
   final Function(PreferredSizeWidget) updateAppBar;
 
   const PromoScreen({super.key, required this.updateAppBar});
-
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
