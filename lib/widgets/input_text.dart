@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class InputText extends StatelessWidget {
   final TextEditingController? controller;
+  final TextInputType? keyboardType;
   final bool? required;
   final String? label;
   final String? placeholder;
@@ -14,7 +15,8 @@ class InputText extends StatelessWidget {
       this.label,
       this.placeholder,
       this.controller,
-      this.isSecureText = false});
+      this.isSecureText = false,
+      this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +39,7 @@ class InputText extends StatelessWidget {
           ],
         ),
       CupertinoTextField(
+        keyboardType: TextInputType.emailAddress,
         obscureText: isSecureText,
         controller: controller,
         padding: EdgeInsets.all(16),

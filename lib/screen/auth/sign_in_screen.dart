@@ -1,5 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:lokapos/configs/app_config.dart';
+import 'package:lokapos/screen/auth/sign_up_screen.dart';
+import 'package:lokapos/services/navigation_service.dart';
 import 'package:lokapos/themes/app_colors.dart';
 import 'package:lokapos/widgets/MainButton.dart';
 import 'package:lokapos/widgets/input_text.dart';
@@ -118,7 +121,9 @@ class _SignInScreenState extends State<SignInScreen> {
                 Text("Don't have account ?"),
                 MainButton(
                   label: "SIGN UP HERE",
-                  onPress: _onSubmit,
+                  onPress: (){
+                    locator<NavigationService>().pushWidget(SignUpScreen());
+                  },
                 ),
               ],
             ),

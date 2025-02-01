@@ -4,8 +4,10 @@ import 'package:lokapos/themes/app_colors.dart';
 class MainButton extends StatelessWidget {
   final VoidCallback? onPress;
   final String? label;
+  final bool disabled;
 
-  const MainButton({super.key, this.onPress, this.label});
+  const MainButton(
+      {super.key, this.onPress, this.label, this.disabled = false});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class MainButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(2),
             ),
           ),
-          onPressed: onPress,
+          onPressed: disabled == true ? null : onPress,
           child: Text(label ?? '')),
     );
   }
