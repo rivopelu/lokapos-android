@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lokapos/configs/app_config.dart';
 import 'package:lokapos/routes.dart';
 import 'package:lokapos/services/navigation_service.dart';
@@ -6,7 +7,7 @@ import 'package:lokapos/themes/app_colors.dart';
 
 void main() async {
   AppConfig().runConfig();
-  runApp(const MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 

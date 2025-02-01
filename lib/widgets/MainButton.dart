@@ -5,9 +5,14 @@ class MainButton extends StatelessWidget {
   final VoidCallback? onPress;
   final String? label;
   final bool disabled;
+  final bool loading;
 
   const MainButton(
-      {super.key, this.onPress, this.label, this.disabled = false});
+      {super.key,
+      this.onPress,
+      this.label,
+      this.disabled = false,
+      this.loading = false});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,14 @@ class MainButton extends StatelessWidget {
             ),
           ),
           onPressed: disabled == true ? null : onPress,
-          child: Text(label ?? '')),
+          child: Row(children: [
+            if (loading == true)
+              CircularProgressIndicator(
+                strokeWidth: 2,
+              )
+            else
+              Text(label ?? '')
+          ])),
     );
   }
 }
