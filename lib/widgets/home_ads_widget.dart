@@ -8,7 +8,7 @@ class HomeAdsWidget extends StatelessWidget {
     String dummyImageUrl = "https://adespresso.com/wp-content/uploads/2019/10/guide-social-media-image-sizes-2019-1024x536.jpg";
 
     return AspectRatio(
-      aspectRatio: 4 / 3.5,
+      aspectRatio: 4 / 3,
       child: Image.network(
           fit: BoxFit.cover,
           dummyImageUrl),

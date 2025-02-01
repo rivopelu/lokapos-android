@@ -1,17 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:lokapos/configs/app_config.dart';
+import 'package:lokapos/screen/auth/sign_in_screen.dart';
+import 'package:lokapos/services/navigation_service.dart';
 import 'package:lokapos/widgets/home_ads_widget.dart';
 import 'package:lokapos/widgets/home_category_list.dart';
 import 'package:lokapos/widgets/home_main_info_card.dart';
 import 'package:lokapos/widgets/screen_container.dart';
-import 'package:lokapos/widgets/special_for_today_carouse_list.dart';
 
 class HomeScreen extends StatefulWidget {
   final Function(PreferredSizeWidget) updateAppBar;
-  final Function(bool) showAppBar;
 
-  const HomeScreen(
-      {super.key, required this.updateAppBar, required this.showAppBar});
+  const HomeScreen({super.key, required this.updateAppBar});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -43,9 +43,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _scrollListener() {
     if (_scrollController.position.pixels > 5) {
-      widget.showAppBar(false);
+      if (kDebugMode) {
+        print(false);
+      }
     } else {
-      widget.showAppBar(false);
+      if (kDebugMode) {
+        print(false);
+      }
     }
   }
 
@@ -54,13 +58,26 @@ class _HomeScreenState extends State<HomeScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       widget.updateAppBar(
         AppBar(
-          title: Text("Home"),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {},
-            ),
-          ],
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Home"),
+              Row(
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.notifications),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.person),
+                    onPressed: () {
+                      locator<NavigationService>().pushWidget(SignInScreen());
+                    },
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       );
     });
@@ -89,12 +106,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               fontWeight: FontWeight.bold, fontSize: 18),
                         )
                       ]),
-                      SpecialForTodayCarouseList(),
-                      HomeCategoryList(),
-
                     ],
                   )),
-                )
+                ),
+                // SpecialForTodayCarouseList(),
+                SizedBox(
+                  height: 12,
+                ),
+                ScreenContainer(child: HomeCategoryList()),
               ],
             ),
           )),
