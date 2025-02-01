@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:lokapos/widgets/BaseScreen.dart';
+import 'package:lokapos/widgets/base_screen.dart';
 
 class DetailOrder extends StatelessWidget {
   const DetailOrder({super.key});

@@ -7,6 +7,7 @@ import 'package:lokapos/widgets/home_ads_widget.dart';
 import 'package:lokapos/widgets/home_category_list.dart';
 import 'package:lokapos/widgets/home_main_info_card.dart';
 import 'package:lokapos/widgets/screen_container.dart';
+import 'package:lokapos/widgets/special_for_today_carouse_list.dart';
 
 class HomeScreen extends StatefulWidget {
   final Function(PreferredSizeWidget) updateAppBar;
@@ -92,28 +93,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 HomeAdsWidget(),
                 Container(
                   transform: Matrix4.translationValues(0, -50, 0),
-                  child: ScreenContainer(
-                      child: Column(
+                  child: Column(
                     spacing: 24,
                     children: [
-                      HomeMainInfoCard(),
-                      HomeCategoryList(),
-                      Row(children: [
-                        Text(
-                          "Special hari ini",
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        )
-                      ]),
+                      ScreenContainer(
+                          child: Column(
+                            spacing: 24,
+
+                        children: [
+                          HomeMainInfoCard(),
+                          HomeCategoryList(),
+                        ],
+                      )),
+                      SpecialForTodayCarouseList(),
+                      SizedBox(
+                        height: 12,
+                      ),
+                      ScreenContainer(child: HomeCategoryList()),
                     ],
-                  )),
+                  ),
                 ),
-                // SpecialForTodayCarouseList(),
-                SizedBox(
-                  height: 12,
-                ),
-                ScreenContainer(child: HomeCategoryList()),
               ],
             ),
           )),
